@@ -5,6 +5,40 @@
   <title>Song.link Redirect</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="manifest" href="manifest.json">
+  <style type="text/css">
+    body{text-align: center; font-family: sans-serif;}
+    .logo{max-width: 512px;margin: 10vh auto;width: 80vw;}
+    .loader{
+      display:block;
+      margin:auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      position: relative;
+      animation: rotate 1s linear infinite
+    }
+    .loader::before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      border: 5px solid #666;
+      animation: prixClipFix 2s linear infinite ;
+    }
+
+    @keyframes rotate {
+      100%   {transform: rotate(360deg)}
+    }
+
+    @keyframes prixClipFix {
+        0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+        25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+        50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+        100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+    }
+  </style>
   <script>
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
@@ -17,15 +51,15 @@
     
       if (url) {
         window.location.href = 'https://song.link/' + encodeURIComponent(url);
+        document.body.innerHTML += "<span class=\"loader\"></span>";
       } else {
-        document.body.innerHTML += "<p>No shareable link found</p>";
+        document.body.innerHTML += "<p>Install this web app and share a song/album/artist to it to open song.link shareable page</p>";
       }
     };
   </script>
 </head>
 <body>
-  <h1>Song.link Redirect</h1>
-  <p>Share a song/album/artist to this app to open song.link shareable page</p>
+  <img src="https://odesli.co/android-chrome-512x512.png" class="logo">
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js').then(() => {
