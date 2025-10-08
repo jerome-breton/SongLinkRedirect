@@ -9,7 +9,7 @@
     "type": "image/png"
   }],
   "share_target": {
-    "action": "/",
+    "action": "https://jerome-breton.github.io/SongLinkRedirect/",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
