@@ -1,7 +1,7 @@
 {
   "name": "Songlink Redirect",
   "short_name": "Songlink",
-  "start_url": "/",
+  "start_url": "https://jerome-breton.github.io/SongLinkRedirect/",
   "display": "standalone",
   "icons": [{
     "src": "https://odesli.co/android-chrome-512x512.png",
