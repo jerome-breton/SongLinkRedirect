@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Song.link Redirect</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      let url = params.get('url') || '';
+    
+      // If empty, try to get text/title
+      if (!url) {
+        url = params.get('text') || params.get('title') || '';
+      }
+    
+      if (url) {
+        window.location.href = 'https://song.link/' + encodeURIComponent(url);
+      } else {
+        document.body.innerHTML += "<p>No shareable link found</p>";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Song.link Redirect</h1>
+  <p>Share a song/album/artist to this app to open song.link shareable page</p>
+</body>
+</html>
